@@ -25,16 +25,14 @@ ChartJS.register(
 )
 
 function Graph(){
-    const refReact = useRef();
     const [humList, setHumList] = useState([])
     const [tempList, setTempList] = useState([])
     const [dates, setDates] = useState([])
 
     useEffect(() => {
+        setInterval(() => {
         const dbRef = ref(db)
-        get(child(dbRef, `data`)).then((snapshot) => {
-            console.log(snapshot.val())
-
+        get(child(dbRef, `data`)).then( async (snapshot) => {
             let dataHum = []
             let dataTemp = []
             let dataDates = []
@@ -43,54 +41,55 @@ function Graph(){
                 const dataVal = data.val()
                 dataHum.push(dataVal.hum)
                 dataTemp.push(dataVal.temp)
-                dataDates.push(moment.unix(dataVal.epoch).format('MM-DD-YY h:mm A'))
+                dataDates.push(moment.unix(dataVal.epoch).format('MM-DD-YY'))
             })
-
-            console.log(dataDates)
             while(dataDates > 6 ){
                 dataHum.shift()
                 dataTemp.shift()
                 dataDates.shift()
             } 
-
             setHumList(dataHum)
             setTempList(dataTemp)
             setDates(dataDates)
-
+            console.log(snapshot.val())
         })
+          }, 5000);
     }, [])
 
-
     const humData = {
-        label: dates ? [...dates] : null,
+        labels: dates ? [...dates] : null,
         datasets: [{
             label: 'Humidity',
             data: humList ? [...humList] : null,
-            backgroundColor: "rgba(255, 99, 132, 0.5)",
-            borderColor: ['#ff577f45'],
+            backgroundColor: "rgba(210, 210, 210, 0.3)",
+            borderColor: ['#d2d2d2d9'],
             pointBackgroundColor: '#ec4646',
-            pointBorderColor: '#ec4646'
+            pointBorderColor: '#ec4646',
+            borderWidth: 1,
+            fontSize: 3
         }]
     }
     const tempData = {
-        label: dates ? [...dates] : null,
+        labels: dates ? [...dates] : null,
         datasets: [{
             label: 'Temperature',
             data: tempList ? [...tempList] : null,
-            backgroundColor: "rgba(255, 99, 132, 0.5)",
-            borderColor: ['#ff577f45'],
+            backgroundColor: "rgba(210, 210, 210, 0.3)",
+            borderColor: ['#d2d2d2d9'],
             pointBackgroundColor: '#ec4646',
-            pointBorderColor: '#ec4646'
+            pointBorderColor: '#ec4646',
+            borderWidth: 1,
+            fontSize: 3
         }]
     }
 
     return (
-        <div class="inline-grid grid-cols-2 w-full flex justify-center">
+        <div class="inline-grid grid-cols-2 w-full ">
             <div class="flex-auto">
-                <Line ref={refReact} data={tempData}/>
+                <Line  data={tempData}/>
             </div>
             <div class="flex-auto">
-                <Line ref={refReact} data={humData}/>    
+                <Line  data={humData}/>    
             </div>
         </div>
     )
