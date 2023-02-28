@@ -3,19 +3,9 @@ import IconLightBulb16 from "../public/IconLight"
 import IconWaterOutline from "../public/IconWater"
 import IconTemperatureCelsius from "../public/IconTemperature"
 import { useState } from "react"
-import { ref, get, child} from "firebase/database"
-import { db } from "../firebase"
+import Graph from "./components/Graph"
 
-const dbRef = ref(db)
-  get(child(dbRef, `data`)).then((snapshot) =>{
-    if (snapshot.exists()){
-      console.log(snapshot.val())
-    } else {
-      console.log("No data")
-    }
-  }).catch((error) => {
-    console.error(error)
-})
+
 
 function App() {
 
@@ -31,12 +21,12 @@ function App() {
         <div class="flex pr-2 pt-8 w-full justify-center">
           <IconLightBulb16 class="flex-auto"/>
         </div>
-        <div class="flex pr-8 pt-8 w-full justify-around pl-auto pr-auto">
+        <div class="flex pr-4 pt-8 w-full justify-around pl-auto pr-auto">
           <div> 
             <p class="flex-auto w-32 text-center text-4xl font-medium">Light</p>
           </div>
         </div>
-          <div class="flex m pt-8 justify-center pl-auto pr-auto">
+          <div class="flex mr-4 pt-8 justify-center pl-auto pr-auto">
             <button class="rounded-lg  py-2 w-36 text-2xl border-2" 
             onClick={handleClickLed} 
             style={{backgroundColor: activeLed ? null : "green"}}>On - Off</button>
@@ -51,6 +41,10 @@ function App() {
         <div class="flex pr-4 pt-8 w-full justify-around pl-auto pr-auto">
           <div> <p class="flex-auto w-32 text-center text-4xl font-medium">Temperature</p></div>
           <div> <p class="flex-auto w-32 text-center text-4xl font-medium">Humidity</p></div>
+        </div>
+
+        <div class="flex pr-4 pt-8 w-full justify-around pl-auto pr-auto">
+          <Graph/>
         </div>
 
       </div>
