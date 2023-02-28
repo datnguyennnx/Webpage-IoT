@@ -12,6 +12,7 @@ import {
     Title,
     Tooltip,
     Legend,
+    Filler,
   } from "chart.js"
 
 ChartJS.register(
@@ -21,7 +22,8 @@ ChartJS.register(
     LineElement,
     Title,
     Tooltip,
-    Legend
+    Legend,
+    Filler
 )
 
 function Graph(){
@@ -65,8 +67,9 @@ function Graph(){
             borderColor: ['#d2d2d2d9'],
             pointBackgroundColor: '#ec4646',
             pointBorderColor: '#ec4646',
-            borderWidth: 1,
-            fontSize: 3
+            borderWidth: 2,
+            fontSize: 12,
+            fill: true
         }]
     }
     const tempData = {
@@ -78,22 +81,21 @@ function Graph(){
             borderColor: ['#d2d2d2d9'],
             pointBackgroundColor: '#ec4646',
             pointBorderColor: '#ec4646',
-            borderWidth: 1,
-            fontSize: 3
+            borderWidth: 2,
+            fontSize: 12,
+            fill: true
         }]
     }
 
     return (
-        <div class="inline-grid grid-cols-2 w-full ">
-            <div class="flex-auto">
+        <div class="flex pl-8 pr-auto pt-8 pb-8 w-full justify-around pl-auto pr-auto h-[27.5rem]">
+            <div class="flex-auto w-[50%] h-[100%]" >
                 <Line  data={tempData}/>
             </div>
-            <div class="flex-auto">
+            <div class="flex-auto w-[50%] h-[100%]">
                 <Line  data={humData}/>    
             </div>
         </div>
     )
 }
-
-
 export default Graph

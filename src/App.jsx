@@ -1,4 +1,5 @@
 import HeadingContainer from "./components/HeaderContainer"
+import FooterContainer from "./components/FooterContainer"
 import IconLightBulb16 from "../public/IconLight"
 import IconWaterOutline from "../public/IconWater"
 import IconTemperatureCelsius from "../public/IconTemperature"
@@ -8,7 +9,6 @@ import Graph from "./components/Graph"
 
 
 function App() {
-
   const [activeLed, setActiveLed] = useState(true)
   const handleClickLed = () => {
     setActiveLed(!activeLed)
@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <HeadingContainer/>
-      <div>
+      <div className="MainContainer">
         <div class="flex pr-2 pt-8 w-full justify-center">
           <IconLightBulb16 class="flex-auto"/>
         </div>
@@ -43,11 +43,10 @@ function App() {
           <div> <p class="flex-auto w-32 text-center text-4xl font-medium">Humidity</p></div>
         </div>
 
-        <div class="flex pr-4 pt-8 w-full justify-around pl-auto pr-auto">
-          <Graph/>
-        </div>
+        <Graph/>
 
       </div>
+      <FooterContainer/>
     </div>
   )
 }
