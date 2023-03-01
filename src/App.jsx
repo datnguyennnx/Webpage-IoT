@@ -42,7 +42,7 @@ function App() {
           <div> <p class="flex-auto w-32 text-center text-4xl font-medium">Temperature</p></div>
           <div> <p class="flex-auto w-32 text-center text-4xl font-medium">Humidity</p></div>
         </div>
-
+        
         <Graph/>
 
       </div>
