@@ -1,6 +1,6 @@
 import * as React from "react";
 
-function IconLightBulb16(props) {
+function IconLight(props) {
   return (
     <svg
       viewBox="0 0 18 18"
@@ -17,4 +17,4 @@ function IconLightBulb16(props) {
   );
 }
 
-export default IconLightBulb16;
+export default IconLight;
