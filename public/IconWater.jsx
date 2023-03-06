@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from "react"
 
 function IconWaterOutline(props) {
   return (
@@ -24,7 +24,7 @@ function IconWaterOutline(props) {
         d="M344 328a72 72 0 01-72 72"
       />
     </svg>
-  );
+  )
 }
 
-export default IconWaterOutline;
+export default IconWaterOutline

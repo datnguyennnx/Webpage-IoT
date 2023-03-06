@@ -1,5 +1,7 @@
+import IconTemperatureCelsius from "../../public/IconTemperature"
+import IconWaterOutline from "../../public/IconWater"
 import { ref, child, get } from "firebase/database";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { db } from "../../firebase"
 import { Line } from "react-chartjs-2"
 import moment from 'moment'
@@ -26,7 +28,7 @@ ChartJS.register(
     Filler
 )
 
-var chartOptions = {
+var tempOptions = {
     plugins: {
       legend: {
         display: true,
@@ -73,7 +75,7 @@ var chartOptions = {
     }
   };
 
-var chartOptions1 = {
+var humOptions = {
     plugins: {
       legend: {
         display: true,
@@ -118,7 +120,8 @@ var chartOptions1 = {
         }
       }
     }
-  };
+  }
+
 
 function Graph(){
     const [humList, setHumList] = useState([])
@@ -142,6 +145,7 @@ function Graph(){
             while(dataDates > 6 ){
                 dataHum.shift()
                 dataTemp.shift()
+                dataPressure.shift()
                 dataDates.shift()
             } 
             setHumList(dataHum)
@@ -149,7 +153,7 @@ function Graph(){
             setDates(dataDates)
             console.log(snapshot.val())
         })
-          }, 5000);
+          }, 10000);
     }, [])
 
     const humData = {
@@ -181,15 +185,27 @@ function Graph(){
         }]
     }
 
+
     return (
-        <div class="flex pl-8 pr-4 mt-8 mb-8 w-full justify-around h-full md:min-h-[15rem]  lg:min-h-[20rem] xl:min-h-[25rem]">
-            <div class="flex-auto w-[50%] h-auto" >
-                <Line  data={tempData} options={chartOptions} />
+      <div>
+         <div class="flex pt-8 w-full justify-around">
+          <IconTemperatureCelsius class="flex-auto fill-rose-500	"/>
+          <IconWaterOutline class="flex-auto fill-indigo-500	"/>
+        </div>
+        <div class="flex pr-4 pt-8 w-full justify-around pl-auto pr-auto">
+          <div> <p class="flex-auto w-32 text-center text-4xl font-medium">Temperature</p></div>
+          <div> <p class="flex-auto w-32 text-center text-4xl font-medium">Humidity</p></div>
+        </div>
+        <div 
+        class="flex pl-8 pr-4 mt-8 w-full justify-around h-full md:min-h-[15rem] lg:min-h-[20rem] xl:min-h-[25rem]">
+            <div class="flex-auto w-[50%] pr-2 h-auto" >
+                <Line  data={tempData} options={tempOptions} />
             </div>
-            <div class="flex-auto w-[50%] h-auto" >
-                <Line  data={humData} options={chartOptions1}/>    
+            <div class="flex-auto w-[50%] pl-2 h-auto" >
+                <Line  data={humData} options={humOptions}/>    
             </div>
         </div>
+      </div>
     )
 }
 export default Graph
