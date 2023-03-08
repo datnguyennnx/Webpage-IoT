@@ -1,10 +1,7 @@
 import IconLightBulb16 from "../../public/IconLight"
 import IconWaterValve from "../../public/IconWaterValve"
 import IconFan from "../../public/IconFan"
-import React, { useEffect, useState } from "react";
-import { db } from "../../firebase"
-import { ref, child, get} from "firebase/database";
-
+import React, { useState } from "react";
 
 
 
@@ -57,13 +54,25 @@ export default function ControlCopoment(){
 
             <div class="flex pr-4 pt-8 w-full justify-around pl-auto pr-auto">
                 <div> 
-                    <button  onClick={handleClickValve} values={activeValve} class="flex-auto w-auto border-2 rounded-lg mb-2 mt-2 p-2 text-center text-3xl font-medium">{activeValve ? "On" : "Off"}</button>
+                    <button  
+                    onClick={handleClickValve} 
+                    values={activeValve} 
+                    class="flex-auto w-auto border-2 rounded-lg mb-2 mt-2 p-2 text-center text-3xl font-medium">
+                        {activeValve ? "On" : "Off"}</button>
                 </div>
                 <div> 
-                    <button  onClick={handleClickLed} values={activeLed}  class="flex-auto w-auto border-2 rounded-lg mb-2 mt-2 p-2 text-center text-3xl font-medium">{activeLed ? "On" : "Off"}</button>
+                    <button  
+                    onClick={handleClickLed} 
+                    values={activeLed}  
+                    class="flex-auto w-auto border-2 rounded-lg mb-2 mt-2 p-2 text-center text-3xl font-medium">
+                        {activeLed ? "On" : "Off"}</button>
                 </div>
                 <div> 
-                    <button  onClick={handleClickFan} values={activeFan}  class="flex-auto w-auto border-2 rounded-lg mb-2 mt-2 p-2 text-center text-3xl font-medium mr-6">{activeFan ? "On" : "Off"}</button>
+                    <button  
+                    onClick={handleClickFan} 
+                    values={activeFan}  
+                    class="flex-auto w-auto border-2 rounded-lg mb-2 mt-2 p-2 text-center text-3xl font-medium mr-6">
+                        {activeFan ? "On" : "Off"}</button>
                 </div>
             </div>
         </div>

@@ -8,8 +8,8 @@ import { getDatabase } from "firebase/database"
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
   authDomain: import.meta.env.VITE_DOMAIN,
-  projectId: "webpage-iot-3d7cc",
-  storageBucket: "webpage-iot-3d7cc.appspot.com",
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
   messagingSenderId: import.meta.env.VITE_MESS_SENDER_ID,
   appId: import.meta.env.VITE_APP_ID
 }

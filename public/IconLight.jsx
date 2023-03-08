@@ -1,7 +1,6 @@
 import * as React from "react"
 
 function IconLight(props) {
-  console.log(props.value)
   return (
     <svg
       viewBox="0 0 18 18"

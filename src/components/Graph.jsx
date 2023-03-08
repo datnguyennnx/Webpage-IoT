@@ -204,7 +204,7 @@ function Graph(){
             setDates(dataDates)
             console.log(snapshot.val())
         })
-          }, 5000);
+          }, 10000);
     }, [])
 
     const humData = {
@@ -238,7 +238,7 @@ function Graph(){
     const pressureData = {
       labels: dates ? [...dates] : null,
       datasets: [{
-          label: 'pressure',
+          label: 'Pressure',
           data: pressureList ? [...pressureList] : null,
           backgroundColor: "rgba(210, 210, 210, 0.3)",
           borderColor: ['#d2d2d2d9'],
@@ -261,7 +261,8 @@ function Graph(){
           <div> <p class="flex-auto w-32 text-center text-4xl font-medium">Humidity</p></div>
         </div>
         <div 
-        class="flex pl-8 pr-4 mt-8 w-full justify-around h-full md:min-h-[15rem] lg:min-h-[20rem] xl:min-h-[25rem]">
+        class="flex pl-8 pr-4 mt-8 w-full justify-around 
+        h-full md:min-h-[15rem] lg:min-h-[20rem] xl:min-h-[25rem]">
             <div class="flex-auto w-[50%] pr-2 h-auto" >
                 <Line  data={tempData} options={tempOptions} />
             </div>
@@ -276,10 +277,9 @@ function Graph(){
           <div> <p class="flex-auto w-32 text-center text-4xl font-medium">Pressure</p></div>
         </div>
 
-          <div class="flex pl-8 pr-4 mt-8  w-full justify-center
+          <div class="flex mt-8  w-full justify-center
            h-full md:min-h-[15rem] lg:min-h-[20rem] xl:min-h-[25rem]">
             <div class="w-[50%]"><Line  data={pressureData} options={pressureOptions} /></div>
-                  
           </div>
       </div>
     )
