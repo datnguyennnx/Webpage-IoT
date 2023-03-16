@@ -15,12 +15,12 @@ DHT dht(DHTPIN, DHTTYPE);
 #include "addons/TokenHelper.h"
 #include "addons/RTDBHelper.h"
 
-#define WIFI_SSID "Nguyen Dat"
-#define WIFI_PASSWORD "datnguyennnx?"
-#define API_KEY "AIzaSyC27W3J0e3RGXkAHsU_JUYFN5vsS1_m_es"
-#define USER_EMAIL "official.nguyendat@gmail.com"
-#define USER_PASSWORD "123123"
-#define DATABASE_URL "https://webpage-iot-3d7cc-default-rtdb.firebaseio.com/"
+#define WIFI_SSID "YOUR_NAME_WIFI"
+#define WIFI_PASSWORD "YOUR_PASSWORD_WIFI"
+#define API_KEY "YOUR_API_KEY"
+#define USER_EMAIL "YOUR_EMAIL"
+#define USER_PASSWORD "YOUR_PASSWORD"
+#define DATABASE_URL "YOUR_DATABASE_URL"
 
 FirebaseData fbdo;
 FirebaseAuth auth;
@@ -54,7 +54,7 @@ float pressure;
 
 //180000 for 3 min
 unsigned long sendDataPrevMillis = 0;
-unsigned long timerDelay = 5000; //30s 5000 => 5s
+unsigned long timerDelay = 5000; // 5000 => 5s
 
 // Initialize WiFi
 void initWiFi() {
